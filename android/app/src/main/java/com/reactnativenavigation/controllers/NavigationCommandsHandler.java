@@ -86,7 +86,14 @@ public class NavigationCommandsHandler {
 
     public static void popToRoot(Bundle screenParams) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
-        if (currentActivity == null) {
+        final NavigationActivity lastActivity = NavigationActivity.lastActivity;
+        final NavigationActivity actualActivity;
+
+        if (currentActivity != null) {
+            actualActivity = currentActivity;
+        } else if (lastActivity != null) {
+            actualActivity = lastActivity;
+        } else {
             return;
         }
 
@@ -94,7 +101,7 @@ public class NavigationCommandsHandler {
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
-                currentActivity.popToRoot(params);
+                actualActivity.popToRoot(params);
             }
         });
     }
