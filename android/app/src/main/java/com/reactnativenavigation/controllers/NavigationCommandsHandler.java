@@ -369,14 +369,21 @@ public class NavigationCommandsHandler {
 
     public static void selectBottomTabByTabIndex(final Integer index) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
-        if (currentActivity == null) {
+        final NavigationActivity lastActivity = NavigationActivity.lastActivity;
+        final NavigationActivity actualActivity;
+
+        if (currentActivity != null) {
+            actualActivity = currentActivity;
+        } else if (lastActivity != null) {
+            actualActivity = lastActivity;
+        } else {
             return;
         }
 
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
-                currentActivity.selectBottomTabByTabIndex(index);
+                actualActivity.selectBottomTabByTabIndex(index);
             }
         });
     }
