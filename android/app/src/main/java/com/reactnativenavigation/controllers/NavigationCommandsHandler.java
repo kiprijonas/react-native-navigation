@@ -177,28 +177,42 @@ public class NavigationCommandsHandler {
 
     public static void showLightBox(final LightBoxParams params) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
-        if (currentActivity == null) {
+        final NavigationActivity lastActivity = NavigationActivity.lastActivity;
+        final NavigationActivity actualActivity;
+
+        if (currentActivity != null) {
+            actualActivity = currentActivity;
+        } else if (lastActivity != null) {
+            actualActivity = lastActivity;
+        } else {
             return;
         }
 
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
-                currentActivity.showLightBox(params);
+                actualActivity.showLightBox(params);
             }
         });
     }
 
     public static void dismissLightBox() {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
-        if (currentActivity == null) {
+        final NavigationActivity lastActivity = NavigationActivity.lastActivity;
+        final NavigationActivity actualActivity;
+
+        if (currentActivity != null) {
+            actualActivity = currentActivity;
+        } else if (lastActivity != null) {
+            actualActivity = lastActivity;
+        } else {
             return;
         }
 
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
-                currentActivity.dismissLightBox();
+                actualActivity.dismissLightBox();
             }
         });
     }

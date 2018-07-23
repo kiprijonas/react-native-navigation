@@ -3584,6 +3584,12 @@ react-devtools-core@^2.0.8:
     cross-env "^3.1.4"
     ws "^2.0.3"
 
+react-native-navigation@^1.1.477:
+  version "1.1.477"
+  resolved "http://nexus.tlt.local:8081/nexus/repository/npm-all/react-native-navigation/-/react-native-navigation-1.1.477.tgz#224c513c2b449bc84eca3f2b9a02d4d83b7962fb"
+  dependencies:
+    lodash "4.x.x"
+
 react-native@0.43.0:
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.43.0.tgz#782b3e3918590d36f9b362b80d72341e8468c3aa"
